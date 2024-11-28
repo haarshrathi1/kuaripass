@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuari Pass Trek - Travel Plan</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <style>
+        /* Reset and Basic Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        body {
+            background: #2C3E50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 221, 87, 0.7);
+            border-radius: 50%;
+            animation: move 25s linear infinite;
+        }
+
+        /* Generate multiple particles */
+        @keyframes move {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-1000px) translateX(1000px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        /* Heading */
+        .container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #FFDD57;
+            text-align: center;
+            position: relative;
+            animation: slideInDown 1s ease-out;
+        }
+
+        /* Decorative Line */
+        .container h1::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #FFDD57;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+            animation: growWidth 1s forwards;
+        }
+
+        /* Content */
+        .container p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Travel Plan Details */
+        .travel-plan {
+            font-size: 1.1em;
+            line-height: 1.6;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .travel-plan h2 {
+            color: #FFDD57;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .travel-plan ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .travel-plan li {
+            margin-bottom: 20px;
+        }
+
+        .travel-plan li h3 {
+            color: #28C76F;
+            margin-bottom: 8px;
+            font-size: 1.4em;
+        }
+
+        .travel-plan li p {
+            margin-left: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #1e3c72;
+            background: #FFDD57;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            animation: bounceIn 1s ease-out;
+        }
+
+        .back-button:hover {
+            background: #FFC107;
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes growWidth {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+            80% {
+                transform: translateY(-2px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 35px 30px;
+            }
+
+            .container h1 {
+                font-size: 2.8em;
+            }
+
+            .back-button {
+                padding: 9px 25px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            .container h1 {
+                font-size: 2.6em;
+            }
+
+            .back-button {
+                padding: 8px 24px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .container h1 {
+                font-size: 2.5em;
+            }
+
+            .back-button {
+                padding: 7px 22px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            .container h1 {
+                font-size: 2.3em;
+            }
+
+            .travel-plan h2 {
+                font-size: 1.6em;
+            }
+
+            .back-button {
+                padding: 6px 20px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .container h1 {
+                font-size: 2em;
+            }
+
+            .travel-plan h2 {
+                font-size: 1.4em;
+            }
+
+            .back-button {
+                padding: 5px 18px;
+                font-size: 0.8em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <!-- Generate multiple particles -->
+        <script>
+            const particleContainer = document.querySelector('.background');
+            const numberOfParticles = 50; // Adjust for density
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                // Random position
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                // Random animation duration and delay
+                particle.style.animationDuration = 20 + Math.random() * 30 + 's';
+                particle.style.animationDelay = '-' + Math.random() * 20 + 's';
+                particleContainer.appendChild(particle);
+            }
+        </script>
+    </div>
+
+    <!-- Travel Plan Container -->
+    <div class="container" role="main">
+        <h1>Travel Plan</h1>
+        <div class="travel-plan">
+            <ul>
+                <li>
+                    <h3>Day 1: Departure</h3>
+                    <p>Departure train from Ahmedabad.</p>
+                </li>
+                <li>
+                    <h3>Day 2: Arrival in Rishikesh</h3>
+                    <p>Arrive at Rishikesh.</p>
+                </li>
+                <li>
+                    <h3>Day 3: Rishikesh to Pipalkoti</h3>
+                    <p>Travel from Rishikesh to Pipalkoti.</p>
+                    <p><strong>Note:</strong> Food is not included on these days except dinner at Pipalkoti, which we will provide.</p>
+                </li>
+                <li>
+                    <h3>Day 4: Pipalkoti – Gulling Top</h3>
+                    <p><strong>Altitude:</strong></p>
+                    <ul>
+                        <li>Tugasi Village: 2450m / 8000 ft.</li>
+                        <li>Gulling Top: 2,850 m / 9,400 ft.</li>
+                    </ul>
+                    <p><strong>Drive Distance (Pipalkoti-Tugasi):</strong> 50 km | 2-3 hrs.</p>
+                    <p><strong>Trek Distance:</strong> 3 km | 2-3 hrs.</p>
+                </li>
+                <li>
+                    <h3>Day 5: Gulling Top to Tali Forest Camp</h3>
+                    <p><strong>Altitude:</strong> 3,350m (11,100 ft).</p>
+                    <p><strong>Trek Distance:</strong> 5 km | 4-5 hours.</p>
+                </li>
+                <li>
+                    <h3>Day 6: Tali Forest Camp to Kuari Pass and back via Khullara Top</h3>
+                    <p><strong>Altitude:</strong></p>
+                    <ul>
+                        <li>Khulara Top: 3,650m (12,000 ft).</li>
+                        <li>Kuari Pass: 3,900m (12,750 ft).</li>
+                    </ul>
+                    <p><strong>Trek Distance:</strong> 10-11 km | 8-9 hours.</p>
+                </li>
+                <li>
+                    <h3>Day 7: Tali Forest Camp - Pipalkoti via Gurson Bugyal and Auli</h3>
+                    <p><strong>Altitude:</strong></p>
+                    <ul>
+                        <li>Tali Lake: 3,550m (11,500 ft).</li>
+                        <li>Gursaon Bugyal: 3,400m (11,150 ft).</li>
+                        <li>Auli: 2900m (9500 ft).</li>
+                    </ul>
+                    <p><strong>Trek Distance:</strong> 9 km | 6-7 hours.</p>
+                    <p><strong>Drive Distance:</strong> 45 km | 1 hr 30 min.</p>
+                    <p><strong>Note:</strong> If weather and snow conditions allow, we will return via Gorson Bugyal or Auli; otherwise, we will retrace our route through Tugasi.</p>
+                </li>
+                <li>
+                    <h3>Day 8: Pipalkoti To Rishikesh</h3>
+                    <p><strong>Drive Distance:</strong> 220 km | approx. 9 hours.</p>
+                </li>
+                <li>
+                    <h3>Day 9: Rishikesh Stay</h3>
+                    <p>Stay in Rishikesh.</p>
+                    <p><strong>Note:</strong> Food not included.</p>
+                </li>
+                <li>
+                    <h3>Day 10: Rishikesh to Ahmedabad</h3>
+                    <p>Return to Ahmedabad.</p>
+                    <p><strong>Note:</strong> Food not included.</p>
+                </li>
+            </ul>
+        </div>
+        <a href="index.html" class="back-button" aria-label="Go Back">← Back to Invitation</a>
+    </div>
+
+</body>
+</html>

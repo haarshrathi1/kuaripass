@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuari Pass Trek Invitation</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <style>
+        /* Reset and Basic Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        body {
+            background: #2C3E50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 221, 87, 0.7);
+            border-radius: 50%;
+            animation: move 25s linear infinite;
+        }
+
+        /* Generate multiple particles */
+        @keyframes move {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-1000px) translateX(1000px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        /* Heading */
+        .container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #FFDD57;
+            text-align: center;
+            position: relative;
+            animation: slideInDown 1s ease-out;
+        }
+
+        /* Decorative Line */
+        .container h1::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #FFDD57;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+            animation: growWidth 1s forwards;
+        }
+
+        /* Content */
+        .container p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Cost Details */
+        .cost-details {
+            text-align: left;
+            margin-bottom: 25px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .cost-details p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #FFDD57;
+        }
+
+        .cost-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .cost-details li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1em;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .cost-details li:hover {
+            transform: translateX(5px);
+            color: #FFDD57;
+        }
+
+        /* Icons for List Items */
+        .cost-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28C76F;
+            font-weight: bold;
+            top: 0;
+        }
+
+        /* Nested List Icons */
+        .cost-details li ul li::before {
+            content: '•';
+            color: #28C76F;
+            font-weight: bold;
+        }
+
+        /* Buttons Container */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* "I'm In!" Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            color: #1e3c72;
+            background: #FFDD57;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            animation: bounceIn 1s ease-out;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #FFC107;
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes growWidth {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+            80% {
+                transform: translateY(-2px);
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            animation: fadeIn 0.5s;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            color: #333;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: none;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+            animation: slideInUp 0.5s;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* Close Button */
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        /* Modal Text */
+        .modal-text {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        /* Slide In Animation for Modal */
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 35px 30px;
+            }
+
+            .container h1 {
+                font-size: 2.8em;
+            }
+
+            .btn {
+                padding: 14px 28px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            .container h1 {
+                font-size: 2.6em;
+            }
+
+            .btn {
+                padding: 13px 26px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .container h1 {
+                font-size: 2.5em;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .modal-content {
+                margin: 25% auto;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            .container h1 {
+                font-size: 2.3em;
+            }
+
+            .cost-details p {
+                font-size: 1.1em;
+            }
+
+            .btn {
+                padding: 11px 22px;
+                font-size: 0.95em;
+                min-width: 100px;
+            }
+
+            .modal-content {
+                margin: 30% auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .container h1 {
+                font-size: 2em;
+            }
+
+            .cost-details p {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                min-width: 90px;
+            }
+
+            .modal-content {
+                margin: 35% auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <!-- Generate multiple particles -->
+        <script>
+            const particleContainer = document.querySelector('.background');
+            const numberOfParticles = 50; // Adjust for density
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                // Random position
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                // Random animation duration and delay
+                particle.style.animationDuration = 20 + Math.random() * 30 + 's';
+                particle.style.animationDelay = '-' + Math.random() * 20 + 's';
+                particleContainer.appendChild(particle);
+            }
+        </script>
+    </div>
+
+    <!-- Invitation Container -->
+    <div class="container" role="main">
+        <h1>Join the Kuari Pass Trek!</h1>
+        <p>
+            Hey everyone!<br><br>
+            I'm excited to share that I'm planning a trek to the Kuari Pass this December, which will also include Christmas and New Year's events! If we reach a group size of 10 members, the total cost will be around <strong>10,000 to 15,000 INR</strong> per person, covering all expenses including travel, accommodation, and meals.
+        </p>
+        <div class="cost-details">
+            <p><strong>Cost Details:</strong></p>
+            <ul>
+                <li>If we don't reach the 10-member group size, we'll join the Trek the Himalayas group.
+                    <ul>
+                        <li>In this case, the trek cost itself is <strong>12,500 INR</strong>.</li>
+                        <li>The overall budget including all travel and accommodation expenses would be up to <strong>20,000 INR</strong> per person.</li>
+                        <li>Accommodation options:
+                            <ul>
+                                <li>Hostel: 250-400 INR per night</li>
+                                <li>Hotel: 1,500 INR per night for two people</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button id="inButton" class="btn" aria-label="I'm In">I'm In!</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <span class="close" id="closeModal" aria-label="Close">&times;</span>
+            <p class="modal-text" id="modalMessage">
+                Thank you for your interest! Click "I'm In!" again to confirm your participation.
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        // Get elements
+        const inButton = document.getElementById('inButton');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+        const modalMessage = document.getElementById('modalMessage');
+
+        // Click count tracker
+        let clickCount = 0;
+
+        // WhatsApp Redirect URL
+        const whatsappNumber = '917041799574'; // Replace with your number in international format without '+' or '-'
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi Harsh, I would like to join the Kuari Pass Trek.')}`;
+
+        // Function to open modal
+        function openModal(message) {
+            modalMessage.textContent = message;
+            modal.style.display = 'block';
+            // Disable background scrolling when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close modal
+        function closeModalFunction() {
+            modal.style.display = 'none';
+            // Re-enable background scrolling when modal is closed
+            document.body.style.overflow = 'auto';
+        }
+
+        // When the user clicks on the "I'm In!" button
+        inButton.addEventListener('click', () => {
+            clickCount += 1;
+            if (clickCount === 1) {
+                openModal('Thank you for your interest! Click "I\'m In!" again to confirm your participation.');
+            } else if (clickCount === 2) {
+                // Redirect to WhatsApp
+                window.open(whatsappURL, '_blank');
+                // Reset clickCount after redirection
+                clickCount = 0;
+                closeModalFunction();
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        closeModal.addEventListener('click', () => {
+            closeModalFunction();
+        });
+
+        // When the user presses the "Escape" key, close the modal
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModalFunction();
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal content, close it
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModalFunction();
+            }
+        });
+    </script>
+
+</body>
+</html>
